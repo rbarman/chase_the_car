@@ -1,0 +1,16 @@
+{
+    "name": "Chase the car",
+    "short_name": "Chase the car",
+    "description": "A simple augmented reality game where you chase a car around the room.",
+    "start_url": "/index.html",
+    "display": "standalone",
+    "background_color": "#ffffff",
+    "theme_color": "#ffffff",
+    "icons": [
+      {
+        "src": "assets/icon.png",
+        "sizes": "192x192",
+        "type": "image/png"
+      }
+    ]
+  }
