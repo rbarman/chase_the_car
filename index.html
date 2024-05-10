@@ -42,25 +42,30 @@
         //     registration.showNotification(message);
         // });
         
+        const car = document.querySelector("#car_entity");
 
-        // Remove car entity that was added before
-        const oldCar = document.querySelector("#car_entity");
-        if (oldCar) {
-            oldCar.parentNode.removeChild(oldCar);
+        // Car entity already exists - update its position
+        if (car) {
+            car.setAttribute('gps-new-entity-place', {
+                latitude: e.detail.position.latitude + 0.001,
+                longitude: e.detail.position.longitude
+            });
         }
+        // Car entity does not exist - create it
+        else {
+            // Initialize car entity
+            const entity = document.createElement("a-entity");
+            entity.setAttribute("id", "car_entity");
+            entity.setAttribute("gltf-model", "#car");
+            entity.setAttribute("scale", ".1 .1 .1");
 
-        // Initialize car entity
-        const entity = document.createElement("a-entity");
-        entity.setAttribute("id", "car_entity");
-        entity.setAttribute("gltf-model", "#car");
-        entity.setAttribute("scale", ".1 .1 .1");
-        
-        // Add car entity to the north of the current GPS position
-        entity.setAttribute('gps-new-entity-place', {
-            latitude: e.detail.position.latitude + 0.001,
-            longitude: e.detail.position.longitude
-        });
-        document.querySelector("a-scene").appendChild(entity);
+            // Add car entity to the north of the current GPS position
+            entity.setAttribute('gps-new-entity-place', {
+                latitude: e.detail.position.latitude + 0.001,
+                longitude: e.detail.position.longitude
+            });
+            document.querySelector("a-scene").appendChild(entity);
+        }
     });
 </script>
 
