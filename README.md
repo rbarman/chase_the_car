@@ -9,8 +9,10 @@ How to view app:
 
 Deployment
 - AR.js docs state that HTTPs deployment is required due to browser restrictions with camera and gps permissions
-- Github pages or netlify are easy and free options to deploy. This app is currently deployed with netlify: https://chase-the-car.netlify.app/
-    - TODO: PWA setup with Github pages requires extra changes in manifest.json
+- Github pages or netlify are easy and free options to deploy. 
+    - netlify: https://chase-the-car.netlify.app/
+    - github pages: https://rbarman.github.io/chase_the_car/ 
+    - Both urls work in a mobile browser. Currently the PWA does not work properly on github pages (need to update manifest.json scope and start url to github repo name).
 
 Asset credits:
 - 3D car model: https://www.turbosquid.com/3d-models/cartoonish-sports-car-pbr-low-poly-1505597
