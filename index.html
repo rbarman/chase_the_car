@@ -25,10 +25,8 @@
         <a-assets>
             <a-asset-item id="car" src="assets/sportcar.017.glb"></a-asset-item>
         </a-assets>
-        <a-box color="red" position="0 2 -5" scale="2 2 2" class="clickable"></a-box>
-        <a-camera gps-new-camera='gpsMinDistance: 5'>
-            <a-entity cursor raycaster="far: 20; interval: 1000; objects: .clickable"></a-entity>
-        </a-camera>
+        <a-camera gps-new-camera='gpsMinDistance: 5'></a-camera>
+        <a-entity cursor raycaster="far: 20; interval: 1000; objects: .clickable"></a-entity>
     </a-scene>
 </body>
 
@@ -60,7 +58,7 @@
             const entity = document.createElement("a-entity");
             entity.setAttribute("id", "car_entity");
             entity.setAttribute("gltf-model", "#car");
-            entity.setAttribute("scale", ".3 .3 .3");
+            entity.setAttribute("scale", ".1 .1 .1");
             entity.setAttribute("class", "clickable");
 
             // Add car entity to the north of the current GPS position
