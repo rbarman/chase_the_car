@@ -25,8 +25,10 @@
         <a-assets>
             <a-asset-item id="car" src="assets/sportcar.017.glb"></a-asset-item>
         </a-assets>
-        <a-camera gps-new-camera='gpsMinDistance: 5'></a-camera>
-        <a-entity cursor raycaster="far: 20; interval: 1000; objects: .clickable"></a-entity>
+        <a-box color="red" position="0 2 -5" scale="2 2 2" class="clickable"></a-box>
+        <a-camera gps-new-camera='gpsMinDistance: 5'>
+            <a-entity cursor raycaster="far: 20; interval: 1000; objects: .clickable"></a-entity>
+        </a-camera>
     </a-scene>
 </body>
 
