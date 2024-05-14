@@ -64,6 +64,13 @@
                 latitude: e.detail.position.latitude + 0.001,
                 longitude: e.detail.position.longitude
             });
+
+            // Make the car entity clickable
+            entity.addEventListener('click', function() {
+                alert("You clicked the car!");
+            });
+
+            // Add car entity to the scene
             document.querySelector("a-scene").appendChild(entity);
         }
     });
