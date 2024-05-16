@@ -17,16 +17,29 @@
             navigator.serviceWorker.register('service-worker.js');
         });
     }
+    // Entities in the a-scene with the 'clicker' attribute are now clickable.
+    AFRAME.registerComponent('clicker', {
+        init: function() {
+            this.el.addEventListener('click', () => {
+                alert("clicked");
+            });
+        }
+    });
     </script>
 
 </head>
 <body>
-    <a-scene vr-mode-ui='enabled: false' arjs='sourceType: webcam; videoTexture: true; debugUIEnabled: false' renderer='antialias: true; alpha: true'>
+    <a-scene 
+        vr-mode-ui='enabled: false' 
+        arjs='sourceType: webcam; videoTexture: true; debugUIEnabled: false' 
+        renderer='antialias: true; alpha: true'
+        cursor='rayOrigin: mouse'
+        raycaster='near: 0; far: 50000'
+    >
         <a-assets>
             <a-asset-item id="car" src="assets/sportcar.017.glb"></a-asset-item>
         </a-assets>
         <a-camera gps-new-camera='gpsMinDistance: 5'></a-camera>
-        <a-entity cursor raycaster="far: 20; interval: 1000; objects: .clickable"></a-entity>
     </a-scene>
 </body>
 
@@ -59,17 +72,12 @@
             entity.setAttribute("id", "car_entity");
             entity.setAttribute("gltf-model", "#car");
             entity.setAttribute("scale", ".1 .1 .1");
-            entity.setAttribute("class", "clickable");
+            entity.setAttribute('clicker', '');
 
             // Add car entity to the north of the current GPS position
             entity.setAttribute('gps-new-entity-place', {
                 latitude: e.detail.position.latitude + 0.001,
                 longitude: e.detail.position.longitude
-            });
-
-            // Make the car entity clickable
-            entity.addEventListener('click', function() {
-                alert("You clicked the car!");
             });
 
             // Add car entity to the scene
