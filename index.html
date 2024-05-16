@@ -37,25 +37,10 @@
 
 <script>
 
-    // Entities in the a-scene with the 'clicker' attribute are now clickable.
-    AFRAME.registerComponent('clicker', {
+    AFRAME.registerComponent('car_entity', {
         init: function() {
             this.el.addEventListener('click', () => {
                 alert("clicked");
-                var entityPosition = this.el.getAttribute('position');
-                var xOffset = 1; // Adjust this as needed
-                var yOffset = 0; // Adjust this as needed
-                var zOffset = 0; // Adjust this as needed
-
-                var box = document.createElement('a-box');
-                box.setAttribute('color', 'red');
-                box.setAttribute('scale', '2 2 2');
-                box.setAttribute('position', {
-                    x: entityPosition.x + xOffset,
-                    y: entityPosition.y + yOffset,
-                    z: entityPosition.z + zOffset
-                });
-                scene.appendChild(box);
             });
         }
     });
@@ -88,7 +73,7 @@
             entity.setAttribute("id", "car_entity");
             entity.setAttribute("gltf-model", "#car");
             entity.setAttribute("scale", ".1 .1 .1");
-            entity.setAttribute('clicker', '');
+            entity.setAttribute('car_entity', '');
 
             // Add car entity to the north of the current GPS position
             entity.setAttribute('gps-new-entity-place', {
