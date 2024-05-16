@@ -65,7 +65,7 @@
         const info_box = document.querySelector("#info_entity");
 
         // Car entity already exists - update its position
-        if (car & info_box) {
+        if (car) {
             car.setAttribute('gps-new-entity-place', {
                 latitude: e.detail.position.latitude + 0.001,
                 longitude: e.detail.position.longitude
