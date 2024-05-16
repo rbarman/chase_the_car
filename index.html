@@ -41,10 +41,13 @@
     AFRAME.registerComponent('clicker', {
         init: function() {
             this.el.addEventListener('click', () => {
-                // alert("clicked");
-                // toggle the visiblity of the box entity
-                const box = document.querySelector("#info_entity");
-                box.setAttribute("visible", !box.getAttribute("visible"));
+                alert("clicked");
+                // surround the entity with a box
+                const box = document.createElement('a-box');
+                box.setAttribute('position', this.el.getAttribute('position'));
+                box.setAttribute('scale', '1.1 1.1 1.1');
+                box.setAttribute('color', 'red');
+                this.el.parentElement.appendChild(box);
             });
         }
     });
@@ -62,16 +65,11 @@
         // });
         
         const car = document.querySelector("#car_entity");
-        const info_box = document.querySelector("#info_entity");
 
         // Car entity already exists - update its position
         if (car) {
             car.setAttribute('gps-new-entity-place', {
                 latitude: e.detail.position.latitude + 0.001,
-                longitude: e.detail.position.longitude
-            });
-            info_box.setAttribute('gps-new-entity-place', {
-                latitude: e.detail.position.latitude + 0.002,
                 longitude: e.detail.position.longitude
             });
         }
@@ -92,20 +90,6 @@
 
             // Add car entity to the scene
             document.querySelector("a-scene").appendChild(entity);
-
-            // Create a box entity next to the car entity
-            const box = document.createElement("a-box");
-            box.setAttribute("id", "info_entity");
-            box.setAttribute("scale", "0.5 0.5 0.5");
-            box.setAttribute("color", "red");
-            box.setAttribute("visible", "false");
-            box.setAttribute('gps-new-entity-place', {
-                latitude: e.detail.position.latitude + 0.002,
-                longitude: e.detail.position.longitude
-            });
-
-            // Add box entity to the scene
-            document.querySelector("a-scene").appendChild(box);
         }
     });
 </script>
