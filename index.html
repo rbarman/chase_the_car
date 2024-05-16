@@ -41,7 +41,7 @@
     AFRAME.registerComponent('clicker', {
         init: function() {
             this.el.addEventListener('click', () => {
-                alert("clicked");
+                // alert("clicked");
                 // toggle the visiblity of the box entity
                 const box = document.querySelector("#info_entity");
                 box.setAttribute("visible", !box.getAttribute("visible"));
@@ -62,11 +62,16 @@
         // });
         
         const car = document.querySelector("#car_entity");
+        const info_box = document.querySelector("#info_entity");
 
         // Car entity already exists - update its position
-        if (car) {
+        if (car & info_box) {
             car.setAttribute('gps-new-entity-place', {
                 latitude: e.detail.position.latitude + 0.001,
+                longitude: e.detail.position.longitude
+            });
+            info_box.setAttribute('gps-new-entity-place', {
+                latitude: e.detail.position.latitude + 0.002,
                 longitude: e.detail.position.longitude
             });
         }
@@ -91,10 +96,13 @@
             // Create a box entity next to the car entity
             const box = document.createElement("a-box");
             box.setAttribute("id", "info_entity");
-            box.setAttribute("position", "0 0 -1");
             box.setAttribute("scale", "0.5 0.5 0.5");
             box.setAttribute("color", "red");
             box.setAttribute("visible", "false");
+            box.setAttribute('gps-new-entity-place', {
+                latitude: e.detail.position.latitude + 0.002,
+                longitude: e.detail.position.longitude
+            });
 
             // Add box entity to the scene
             document.querySelector("a-scene").appendChild(box);
